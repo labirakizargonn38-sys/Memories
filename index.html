@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html><html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,135 +13,124 @@
       align-items:center;
       justify-content:center;
       color:white;
-    }
-    .container{
-      width:92%;
-      max-width:1000px;
-      background:rgba(255,255,255,0.06);
-      backdrop-filter:blur(12px);
-      border-radius:22px;
-      padding:30px;
-      box-shadow:0 20px 40px rgba(0,0,0,.4);
-      text-align:center;
-    }
+    }.container{
+  width:92%;
+  max-width:1000px;
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(12px);
+  border-radius:22px;
+  padding:30px;
+  box-shadow:0 20px 40px rgba(0,0,0,.4);
+  text-align:center;
+}
 
-    h1{
-      font-size:2.5rem;
-      letter-spacing:2px;
-      margin-bottom:10px;
-    }
+h1{
+  font-size:2.5rem;
+  letter-spacing:2px;
+  margin-bottom:10px;
+}
 
-    .subtitle{
-      opacity:.8;
-      margin-bottom:30px;
-    }
+.subtitle{
+  opacity:.8;
+  margin-bottom:30px;
+}
 
-    .slides{
-      display:flex;
-      gap:20px;
-      justify-content:center;
-      flex-wrap:wrap;
-      margin-bottom:30px;
-    }
+.slides{
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-bottom:30px;
+}
 
-    .slide-btn{
-      padding:14px 26px;
-      border-radius:30px;
-      background:linear-gradient(135deg,#1e90ff,#00bfff);
-      border:none;
-      color:white;
-      font-weight:600;
-      cursor:pointer;
-      transition:.3s;
-      box-shadow:0 8px 20px rgba(0,0,0,.3);
-    }
+.slide-btn{
+  padding:14px 26px;
+  border-radius:30px;
+  background:linear-gradient(135deg,#1e90ff,#00bfff);
+  border:none;
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+  transition:.3s;
+  box-shadow:0 8px 20px rgba(0,0,0,.3);
+}
 
-    .slide-btn:hover{transform:translateY(-4px) scale(1.05)}
+.slide-btn:hover{transform:translateY(-4px) scale(1.05)}
 
-    .gallery{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-      gap:15px;
-      margin-top:20px;
-    }
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:15px;
+  margin-top:20px;
+}
 
-    .gallery img{
-      width:100%;
-      height:220px;
-      object-fit:cover;
-      border-radius:16px;
-      transition:.3s;
-      cursor:pointer;
-      box-shadow:0 10px 20px rgba(0,0,0,.35);
-    }
+.gallery img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  border-radius:16px;
+  transition:.3s;
+  cursor:pointer;
+  box-shadow:0 10px 20px rgba(0,0,0,.35);
+}
 
-    .gallery img:hover{transform:scale(1.08)}
+.gallery img:hover{transform:scale(1.08)}
 
-    .empty{
-      opacity:.7;
-      margin-top:20px;
-    }
+.empty{
+  opacity:.7;
+  margin-top:20px;
+}
 
-    footer{
-      margin-top:30px;
-      font-size:.85rem;
-      opacity:.6;
-    }
+footer{
+  margin-top:30px;
+  font-size:.85rem;
+  opacity:.6;
+}
 
-    .modal{
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,.7);
-      display:none;
-      align-items:center;
-      justify-content:center;
-    }
+/* modal */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.7);
+  display:none;
+  align-items:center;
+  justify-content:center;
+}
 
-    .modal img{
-      max-width:90%;
-      max-height:90%;
-      border-radius:20px;
-    }
+.modal img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:20px;
+}
+
   </style>
 </head>
-<body>
-
-<div class="container">
+<body><div class="container">
   <h1>Memories</h1>
-  <p class="subtitle">Best Moments, One Place ✨</p>
-
-  <div class="slides">
+  <p class="subtitle">Best Moments, One Place ✨</p>  <div class="slides">
     <button class="slide-btn" onclick="showGallery('bestie')">Bestie</button>
     <button class="slide-btn" onclick="showGallery('yppa')">YPPA</button>
     <button class="slide-btn" onclick="showGallery('him')">Him</button>
-  </div>
-
-  <div id="gallery" class="gallery"></div>
-  <p id="empty" class="empty">Klik salah satu slide untuk melihat foto 📸</p>
-
-  <footer>Auliya XI-12</footer>
-</div>
-
-<div class="modal" id="modal" onclick="this.style.display='none'">
+  </div>  <div id="gallery" class="gallery"></div>
+  <p id="empty" class="empty">Klik salah satu slide untuk melihat foto 📸</p>  <footer>© 2026 - Auliya XI-12</footer>
+</div><div class="modal" id="modal" onclick="this.style.display='none'">
   <img id="modalImg" />
-</div>
-
-<script>
+</div><script>
   const data = {
     bestie: [
-      'bestie1.jpg',
-      'bestie2.jpg',
-      'bestie3.jpg'
+      'img/bestie1.jpg',
+      'img/bestie2.jpg',
+      'img/bestie3.jpg'
     ],
     yppa: [
-      'yppa1.jpg',
-      'yppa2.jpg',
-      'yppa3.jpg'
+      'img/yppa1.jpg',
+      'img/yppa2.jpg',
+      'img/yppa3.jpg'
     ],
     him: [
-      'him1.jpg',
-      'him2.jpg',
-      'him3.jpg'
+      'img/him1.jpg',
+      'img/him2.jpg',
+      'img/him3.jpg'
     ]
   };
 
@@ -165,7 +153,5 @@
     document.getElementById('modal').style.display='flex';
     document.getElementById('modalImg').src = src;
   }
-</script>
-
-</body>
+</script></body>
 </html>
