@@ -1,19 +1,13 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Memories</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Poppins',sans-serif
-}
-
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
 body{
   min-height:100vh;
   background:linear-gradient(135deg,#061a33,#0b3c6d);
@@ -23,8 +17,8 @@ body{
   color:white;
 }
 
-/* LOGIN */
-.login-box{
+/* AUTH BOX */
+.auth-box{
   width:90%;
   max-width:400px;
   background:rgba(255,255,255,0.08);
@@ -35,11 +29,8 @@ body{
   box-shadow:0 20px 40px rgba(0,0,0,.4);
 }
 
-.login-box h2{
-  margin-bottom:20px;
-}
-
-.login-box input{
+.auth-box h2{margin-bottom:20px}
+.auth-box input{
   width:100%;
   padding:12px;
   margin:10px 0;
@@ -48,7 +39,7 @@ body{
   outline:none;
 }
 
-.login-box button{
+.auth-box button{
   width:100%;
   padding:12px;
   margin-top:15px;
@@ -60,11 +51,14 @@ body{
   cursor:pointer;
 }
 
-.error{
-  margin-top:10px;
-  color:#ff9b9b;
+.switch{
+  margin-top:15px;
   font-size:.9rem;
+  cursor:pointer;
+  opacity:.8;
 }
+
+.error{color:#ff9b9b;font-size:.9rem;margin-top:8px}
 
 /* MAIN WEBSITE */
 .container{
@@ -75,7 +69,6 @@ body{
   backdrop-filter:blur(12px);
   border-radius:22px;
   padding:30px;
-  box-shadow:0 20px 40px rgba(0,0,0,.4);
   text-align:center;
 }
 
@@ -91,25 +84,6 @@ body{
   cursor:pointer;
 }
 
-h1{
-  font-size:2.5rem;
-  letter-spacing:2px;
-  margin-bottom:10px;
-}
-
-.subtitle{
-  opacity:.8;
-  margin-bottom:10px;
-}
-
-.desc{
-  margin-top:10px;
-  margin-bottom:25px;
-  opacity:.85;
-  font-weight:300;
-  line-height:1.6;
-}
-
 .slides{
   display:flex;
   gap:20px;
@@ -123,23 +97,6 @@ h1{
   border-radius:30px;
   background:linear-gradient(135deg,#1e90ff,#00bfff);
   border:none;
-  color:white;
-  font-weight:600;
-  cursor:pointer;
-  transition:.3s;
-}
-
-.slide-btn:hover{
-  transform:translateY(-4px) scale(1.05)
-}
-
-.back-btn{
-  display:none;
-  margin-bottom:20px;
-  padding:10px 22px;
-  border-radius:25px;
-  border:none;
-  background:linear-gradient(135deg,#ff7eb3,#ff4f81);
   color:white;
   cursor:pointer;
 }
@@ -158,125 +115,111 @@ h1{
   border-radius:16px;
   cursor:pointer;
 }
-
-.empty{
-  opacity:.7;
-  margin-top:20px;
-}
-
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.7);
-  display:none;
-  align-items:center;
-  justify-content:center;
-}
-
-.modal img{
-  max-width:90%;
-  max-height:90%;
-  border-radius:20px;
-}
-
 </style>
 </head>
 <body>
 
-<!-- LOGIN -->
-<div class="login-box" id="loginBox">
-  <h2>Login Pembaca</h2>
-  <input type="text" id="username" placeholder="Username">
-  <input type="password" id="password" placeholder="Password">
-  <button onclick="login()">Masuk</button>
-  <p class="error" id="error"></p>
+<!-- REGISTER -->
+<div class="auth-box" id="registerBox">
+  <h2>Buat Akun</h2>
+  <input type="text" id="regUser" placeholder="Buat Username">
+  <input type="password" id="regPass" placeholder="Buat Password">
+  <button onclick="register()">Daftar</button>
+  <p class="error" id="regError"></p>
+  <p class="switch" onclick="showLogin()">Sudah punya akun? Login</p>
 </div>
 
-<!-- MAIN WEBSITE -->
-<div class="container" id="mainWeb">
+<!-- LOGIN -->
+<div class="auth-box" id="loginBox" style="display:none">
+  <h2>Login</h2>
+  <input type="text" id="loginUser" placeholder="Username">
+  <input type="password" id="loginPass" placeholder="Password">
+  <button onclick="login()">Masuk</button>
+  <p class="error" id="loginError"></p>
+  <p class="switch" onclick="showRegister()">Belum punya akun? Daftar</p>
+</div>
 
+<!-- MAIN WEB -->
+<div class="container" id="mainWeb">
 <button class="logout-btn" onclick="logout()">Logout</button>
 
 <h1>Memories</h1>
-<p class="subtitle">Best Moments, One Place ✨</p>
-<p class="desc">
-Website ini dibuat untuk menyimpan memori berharga yang ingin dikenang dan disimpan selamanya dalam satu tempat istimewa 💙
-</p>
+<p>Website ini untuk menyimpan memori berharga 💙</p>
 
-<div class="slides" id="slides">
+<div class="slides">
   <button class="slide-btn" onclick="showGallery('bestie')">Bestie</button>
   <button class="slide-btn" onclick="showGallery('yppa')">YPPA</button>
   <button class="slide-btn" onclick="showGallery('him')">Him</button>
 </div>
 
-<button class="back-btn" id="backBtn" onclick="goHome()">⬅ Kembali</button>
-
 <div id="gallery" class="gallery"></div>
-<p id="empty" class="empty">Klik salah satu slide untuk melihat foto 📸</p>
-
-</div>
-
-<div class="modal" id="modal" onclick="this.style.display='none'">
-  <img id="modalImg" />
 </div>
 
 <script>
-const validUser = "reader";
-const validPass = "12345";
+// REGISTER
+function register(){
+  const user = document.getElementById("regUser").value;
+  const pass = document.getElementById("regPass").value;
 
+  if(user === "" || pass === ""){
+    document.getElementById("regError").textContent="Isi semua dulu!";
+    return;
+  }
+
+  localStorage.setItem("username", user);
+  localStorage.setItem("password", pass);
+
+  alert("Akun berhasil dibuat! Silakan login.");
+  showLogin();
+}
+
+// LOGIN
 function login(){
-  const user = document.getElementById("username").value;
-  const pass = document.getElementById("password").value;
-  const error = document.getElementById("error");
+  const user = document.getElementById("loginUser").value;
+  const pass = document.getElementById("loginPass").value;
 
-  if(user === validUser && pass === validPass){
-    document.getElementById("loginBox").style.display = "none";
-    document.getElementById("mainWeb").style.display = "block";
+  const savedUser = localStorage.getItem("username");
+  const savedPass = localStorage.getItem("password");
+
+  if(user === savedUser && pass === savedPass){
+    document.getElementById("loginBox").style.display="none";
+    document.getElementById("mainWeb").style.display="block";
   } else {
-    error.textContent = "Username atau password salah!";
+    document.getElementById("loginError").textContent="Username atau password salah!";
   }
 }
 
+// LOGOUT
 function logout(){
-  document.getElementById("mainWeb").style.display = "none";
-  document.getElementById("loginBox").style.display = "block";
+  document.getElementById("mainWeb").style.display="none";
+  document.getElementById("loginBox").style.display="block";
 }
 
-const data = {
-  bestie: ['img/bestie1.jpg','img/bestie2.jpg','img/bestie3.jpg'],
-  yppa: ['img/yppa1.jpg','img/yppa2.jpg','img/yppa3.jpg'],
-  him: ['img/him1.jpg','img/him2.jpg','img/him3.jpg']
+// SWITCH
+function showLogin(){
+  document.getElementById("registerBox").style.display="none";
+  document.getElementById("loginBox").style.display="block";
+}
+function showRegister(){
+  document.getElementById("loginBox").style.display="none";
+  document.getElementById("registerBox").style.display="block";
+}
+
+// GALLERY
+const data={
+  bestie:['img/bestie1.jpg','img/bestie2.jpg','img/bestie3.jpg'],
+  yppa:['img/yppa1.jpg','img/yppa2.jpg','img/yppa3.jpg'],
+  him:['img/him1.jpg','img/him2.jpg','img/him3.jpg']
 };
 
 function showGallery(type){
-  const gallery = document.getElementById('gallery');
-  const empty = document.getElementById('empty');
-  const slides = document.getElementById('slides');
-  const backBtn = document.getElementById('backBtn');
-
-  gallery.innerHTML = '';
-  empty.style.display = 'none';
-  slides.style.display = 'none';
-  backBtn.style.display = 'inline-block';
-
-  data[type].forEach(src =>{
-    const img = document.createElement('img');
-    img.src = src;
-    img.onclick = ()=>openModal(src);
+  const gallery=document.getElementById("gallery");
+  gallery.innerHTML="";
+  data[type].forEach(src=>{
+    const img=document.createElement("img");
+    img.src=src;
     gallery.appendChild(img);
   });
-}
-
-function goHome(){
-  document.getElementById('gallery').innerHTML = '';
-  document.getElementById('empty').style.display = 'block';
-  document.getElementById('slides').style.display = 'flex';
-  document.getElementById('backBtn').style.display = 'none';
-}
-
-function openModal(src){
-  document.getElementById('modal').style.display='flex';
-  document.getElementById('modalImg').src = src;
 }
 </script>
 
