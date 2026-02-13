@@ -30,6 +30,7 @@ body{
 }
 
 .auth-box h2{margin-bottom:20px}
+
 .auth-box input{
   width:100%;
   padding:12px;
@@ -37,6 +38,18 @@ body{
   border:none;
   border-radius:12px;
   outline:none;
+}
+
+.password-wrapper{
+  position:relative;
+}
+
+.password-wrapper span{
+  position:absolute;
+  right:15px;
+  top:50%;
+  transform:translateY(-50%);
+  cursor:pointer;
 }
 
 .auth-box button{
@@ -123,7 +136,12 @@ body{
 <div class="auth-box" id="registerBox">
   <h2>Buat Akun</h2>
   <input type="text" id="regUser" placeholder="Buat Username">
-  <input type="password" id="regPass" placeholder="Buat Password">
+
+  <div class="password-wrapper">
+    <input type="password" id="regPass" placeholder="Buat Password">
+    <span onclick="togglePassword('regPass')">👁</span>
+  </div>
+
   <button onclick="register()">Daftar</button>
   <p class="error" id="regError"></p>
   <p class="switch" onclick="showLogin()">Sudah punya akun? Login</p>
@@ -133,7 +151,12 @@ body{
 <div class="auth-box" id="loginBox" style="display:none">
   <h2>Login</h2>
   <input type="text" id="loginUser" placeholder="Username">
-  <input type="password" id="loginPass" placeholder="Password">
+
+  <div class="password-wrapper">
+    <input type="password" id="loginPass" placeholder="Password">
+    <span onclick="togglePassword('loginPass')">👁</span>
+  </div>
+
   <button onclick="login()">Masuk</button>
   <p class="error" id="loginError"></p>
   <p class="switch" onclick="showRegister()">Belum punya akun? Daftar</p>
@@ -156,6 +179,11 @@ body{
 </div>
 
 <script>
+function togglePassword(id){
+  const input = document.getElementById(id);
+  input.type = input.type === "password" ? "text" : "password";
+}
+
 // REGISTER
 function register(){
   const user = document.getElementById("regUser").value;
@@ -195,7 +223,6 @@ function logout(){
   document.getElementById("loginBox").style.display="block";
 }
 
-// SWITCH
 function showLogin(){
   document.getElementById("registerBox").style.display="none";
   document.getElementById("loginBox").style.display="block";
