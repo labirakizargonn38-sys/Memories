@@ -1,279 +1,223 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Memories</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Memories</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif
+    }
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+    body{
+      min-height:100vh;
+      background:linear-gradient(135deg,#061a33,#0b3c6d);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+    }
 
-body{
-  min-height:100vh;
-  background:linear-gradient(135deg,#061a33,#0b3c6d);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:white;
-}
+    .container{
+      width:92%;
+      max-width:1000px;
+      background:rgba(255,255,255,0.06);
+      backdrop-filter:blur(12px);
+      border-radius:22px;
+      padding:30px;
+      box-shadow:0 20px 40px rgba(0,0,0,.4);
+      text-align:center;
+    }
 
-/* AUTH BOX */
-.auth-box{
-  width:90%;
-  max-width:400px;
-  background:rgba(255,255,255,0.08);
-  backdrop-filter:blur(15px);
-  padding:35px;
-  border-radius:22px;
-  text-align:center;
-  box-shadow:0 20px 50px rgba(0,0,0,.5);
-}
+    h1{
+      font-size:2.5rem;
+      letter-spacing:2px;
+      margin-bottom:10px;
+    }
 
-.auth-box h2{margin-bottom:20px;font-weight:600}
+    .subtitle{
+      opacity:.8;
+      margin-bottom:10px;
+    }
 
-.auth-box input{
-  width:100%;
-  padding:12px;
-  margin:10px 0;
-  border:none;
-  border-radius:12px;
-  outline:none;
-}
+    .desc{
+      margin-top:10px;
+      margin-bottom:25px;
+      opacity:.85;
+      font-weight:300;
+      line-height:1.6;
+    }
 
-.password-wrapper{position:relative;}
+    .slides{
+      display:flex;
+      gap:20px;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin-bottom:30px;
+    }
 
-.password-wrapper span{
-  position:absolute;
-  right:15px;
-  top:50%;
-  transform:translateY(-50%);
-  cursor:pointer;
-}
+    .slide-btn{
+      padding:14px 26px;
+      border-radius:30px;
+      background:linear-gradient(135deg,#1e90ff,#00bfff);
+      border:none;
+      color:white;
+      font-weight:600;
+      cursor:pointer;
+      transition:.3s;
+      box-shadow:0 8px 20px rgba(0,0,0,.3);
+    }
 
-.auth-box button{
-  width:100%;
-  padding:12px;
-  margin-top:15px;
-  border:none;
-  border-radius:20px;
-  background:linear-gradient(135deg,#1e90ff,#00bfff);
-  color:white;
-  font-weight:600;
-  cursor:pointer;
-  transition:.3s;
-}
+    .slide-btn:hover{
+      transform:translateY(-4px) scale(1.05)
+    }
 
-.auth-box button:hover{
-  transform:scale(1.03);
-}
+    .back-btn{
+      display:none;
+      margin-bottom:20px;
+      padding:10px 22px;
+      border-radius:25px;
+      border:none;
+      background:linear-gradient(135deg,#ff7eb3,#ff4f81);
+      color:white;
+      font-weight:500;
+      cursor:pointer;
+      transition:.3s;
+    }
 
-.switch{
-  margin-top:15px;
-  font-size:.9rem;
-  cursor:pointer;
-  opacity:.8;
-}
+    .back-btn:hover{
+      transform:scale(1.05);
+    }
 
-.error{color:#ff9b9b;font-size:.9rem;margin-top:8px}
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+      gap:15px;
+      margin-top:20px;
+    }
 
-/* MAIN WEBSITE */
-.container{
-  display:none;
-  width:92%;
-  max-width:1000px;
-  background:rgba(255,255,255,0.06);
-  backdrop-filter:blur(15px);
-  border-radius:24px;
-  padding:40px;
-  text-align:center;
-  box-shadow:0 20px 60px rgba(0,0,0,.5);
-}
+    .gallery img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+      border-radius:16px;
+      transition:.3s;
+      cursor:pointer;
+      box-shadow:0 10px 20px rgba(0,0,0,.35);
+    }
 
-.container h1{
-  font-weight:700;
-  margin-bottom:10px;
-}
+    .gallery img:hover{
+      transform:scale(1.08)
+    }
 
-.container p{
-  opacity:.8;
-  margin-bottom:25px;
-}
+    .empty{
+      opacity:.7;
+      margin-top:20px;
+    }
 
-.logout-btn{
-  margin:20px auto 30px auto;
-  display:block;
-  padding:10px 28px;
-  border:none;
-  border-radius:25px;
-  background:linear-gradient(135deg,#ff7eb3,#ff4f81);
-  color:white;
-  cursor:pointer;
-  transition:.3s;
-}
+    footer{
+      margin-top:30px;
+      font-size:.85rem;
+      opacity:.6;
+    }
 
-.logout-btn:hover{
-  transform:scale(1.05);
-}
+    .modal{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.7);
+      display:none;
+      align-items:center;
+      justify-content:center;
+    }
 
-.slides{
-  display:flex;
-  gap:20px;
-  justify-content:center;
-  flex-wrap:wrap;
-  margin-bottom:30px;
-}
+    .modal img{
+      max-width:90%;
+      max-height:90%;
+      border-radius:20px;
+    }
 
-.slide-btn{
-  padding:14px 28px;
-  border-radius:30px;
-  background:linear-gradient(135deg,#1e90ff,#00bfff);
-  border:none;
-  color:white;
-  cursor:pointer;
-  transition:.3s;
-}
-
-.slide-btn:hover{
-  transform:scale(1.05);
-}
-
-.gallery{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:18px;
-  margin-top:20px;
-}
-
-.gallery img{
-  width:100%;
-  height:220px;
-  object-fit:cover;
-  border-radius:18px;
-  cursor:pointer;
-  transition:.3s;
-}
-
-.gallery img:hover{
-  transform:scale(1.05);
-}
-</style>
+  </style>
 </head>
 <body>
 
-<!-- REGISTER -->
-<div class="auth-box" id="registerBox">
-  <h2>Buat Akun</h2>
-  <input type="text" id="regUser" placeholder="Buat Username">
-
-  <div class="password-wrapper">
-    <input type="password" id="regPass" placeholder="Buat Password">
-    <span onclick="togglePassword('regPass')">👁</span>
-  </div>
-
-  <button onclick="register()">Daftar</button>
-  <p class="error" id="regError"></p>
-  <p class="switch" onclick="showLogin()">Sudah punya akun? Login</p>
-</div>
-
-<!-- LOGIN -->
-<div class="auth-box" id="loginBox" style="display:none">
-  <h2>Login</h2>
-  <input type="text" id="loginUser" placeholder="Username">
-
-  <div class="password-wrapper">
-    <input type="password" id="loginPass" placeholder="Password">
-    <span onclick="togglePassword('loginPass')">👁</span>
-  </div>
-
-  <button onclick="login()">Masuk</button>
-  <p class="error" id="loginError"></p>
-  <p class="switch" onclick="showRegister()">Belum punya akun? Daftar</p>
-</div>
-
-<!-- MAIN WEB -->
-<div class="container" id="mainWeb">
+<div class="container">
   <h1>Memories</h1>
-  <p>Website ini untuk menyimpan memori berharga 💙</p>
+  <p class="subtitle">Best Moments, One Place ✨</p>
+  <p class="desc">
+    Website ini dibuat untuk menyimpan memori berharga yang ingin dikenang dan disimpan selamanya dalam satu tempat istimewa 💙
+  </p>
 
-  <button class="logout-btn" onclick="logout()">Logout</button>
-
-  <div class="slides">
+  <div class="slides" id="slides">
     <button class="slide-btn" onclick="showGallery('bestie')">Bestie</button>
     <button class="slide-btn" onclick="showGallery('yppa')">YPPA</button>
     <button class="slide-btn" onclick="showGallery('him')">Him</button>
   </div>
 
+  <button class="back-btn" id="backBtn" onclick="goHome()">⬅ Kembali ke Awal</button>
+
   <div id="gallery" class="gallery"></div>
+  <p id="empty" class="empty">Klik salah satu slide untuk melihat foto 📸</p>
+
+  <footer>© 2026 - Auliya XI-12</footer>
+</div>
+
+<div class="modal" id="modal" onclick="this.style.display='none'">
+  <img id="modalImg" />
 </div>
 
 <script>
-function togglePassword(id){
-  const input = document.getElementById(id);
-  input.type = input.type === "password" ? "text" : "password";
-}
+  const data = {
+    bestie: [
+      'img/bestie1.jpg',
+      'img/bestie2.jpg',
+      'img/bestie3.jpg'
+    ],
+    yppa: [
+      'img/yppa1.jpg',
+      'img/yppa2.jpg',
+      'img/yppa3.jpg'
+    ],
+    him: [
+      'img/him1.jpg',
+      'img/him2.jpg',
+      'img/him3.jpg'
+    ]
+  };
 
-function register(){
-  const user = document.getElementById("regUser").value;
-  const pass = document.getElementById("regPass").value;
+  function showGallery(type){
+    const gallery = document.getElementById('gallery');
+    const empty = document.getElementById('empty');
+    const slides = document.getElementById('slides');
+    const backBtn = document.getElementById('backBtn');
 
-  if(user === "" || pass === ""){
-    document.getElementById("regError").textContent="Isi semua dulu!";
-    return;
+    gallery.innerHTML = '';
+    empty.style.display = 'none';
+    slides.style.display = 'none';
+    backBtn.style.display = 'inline-block';
+
+    data[type].forEach(src =>{
+      const img = document.createElement('img');
+      img.src = src;
+      img.onclick = ()=>openModal(src);
+      gallery.appendChild(img);
+    });
   }
 
-  localStorage.setItem("username", user);
-  localStorage.setItem("password", pass);
-
-  alert("Akun berhasil dibuat! Silakan login.");
-  showLogin();
-}
-
-function login(){
-  const user = document.getElementById("loginUser").value;
-  const pass = document.getElementById("loginPass").value;
-
-  const savedUser = localStorage.getItem("username");
-  const savedPass = localStorage.getItem("password");
-
-  if(user === savedUser && pass === savedPass){
-    document.getElementById("loginBox").style.display="none";
-    document.getElementById("mainWeb").style.display="block";
-  } else {
-    document.getElementById("loginError").textContent="Username atau password salah!";
+  function goHome(){
+    document.getElementById('gallery').innerHTML = '';
+    document.getElementById('empty').style.display = 'block';
+    document.getElementById('slides').style.display = 'flex';
+    document.getElementById('backBtn').style.display = 'none';
   }
-}
 
-function logout(){
-  document.getElementById("mainWeb").style.display="none";
-  document.getElementById("loginBox").style.display="block";
-}
-
-function showLogin(){
-  document.getElementById("registerBox").style.display="none";
-  document.getElementById("loginBox").style.display="block";
-}
-
-function showRegister(){
-  document.getElementById("loginBox").style.display="none";
-  document.getElementById("registerBox").style.display="block";
-}
-
-const data={
-  bestie:['img/bestie1.jpg','img/bestie2.jpg','img/bestie3.jpg'],
-  yppa:['img/yppa1.jpg','img/yppa2.jpg','img/yppa3.jpg'],
-  him:['img/him1.jpg','img/him2.jpg','img/him3.jpg']
-};
-
-function showGallery(type){
-  const gallery=document.getElementById("gallery");
-  gallery.innerHTML="";
-  data[type].forEach(src=>{
-    const img=document.createElement("img");
-    img.src=src;
-    gallery.appendChild(img);
-  });
-}
+  function openModal(src){
+    document.getElementById('modal').style.display='flex';
+    document.getElementById('modalImg').src = src;
+  }
 </script>
 
 </body>
