@@ -31,9 +31,10 @@ body{
   left:20px;
   font-size:28px;
   cursor:pointer;
-  z-index:2000;
+  z-index:3000; /* lebih tinggi */
 }
 
+/* SIDE MENU */
 .side-menu{
   position:fixed;
   top:0;
@@ -41,10 +42,12 @@ body{
   width:250px;
   height:100%;
   background:#081f3f;
-  padding:90px 20px 40px; /* sudah diturunkan */
+  padding-top:120px; /* ini yang bikin turun */
+  padding-left:20px;
+  padding-right:20px;
   transition:.4s;
   box-shadow:5px 0 20px rgba(0,0,0,.5);
-  z-index:1500;
+  z-index:2000;
 }
 
 .side-menu.active{
@@ -60,6 +63,7 @@ body{
   background:linear-gradient(135deg,#1e90ff,#00bfff);
   color:white;
   cursor:pointer;
+  font-weight:600;
 }
 
 /* CONTAINER */
@@ -176,7 +180,7 @@ footer{
   display:none;
   align-items:center;
   justify-content:center;
-  z-index:3000;
+  z-index:4000;
 }
 
 .modal img{
@@ -278,4 +282,4 @@ function openModal(src){
 </script>
 
 </body>
-</html></html>
+</html>
