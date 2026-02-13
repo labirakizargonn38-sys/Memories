@@ -31,7 +31,7 @@ body{
   left:20px;
   font-size:28px;
   cursor:pointer;
-  z-index:3000; /* lebih tinggi */
+  z-index:3000;
 }
 
 /* SIDE MENU */
@@ -42,7 +42,7 @@ body{
   width:250px;
   height:100%;
   background:#081f3f;
-  padding-top:120px; /* ini yang bikin turun */
+  padding-top:70px; /* lebih dekat ke hamburger */
   padding-left:20px;
   padding-right:20px;
   transition:.4s;
@@ -56,14 +56,20 @@ body{
 
 .side-menu button{
   width:100%;
-  padding:12px;
+  padding:14px;
   margin-bottom:15px;
   border:none;
-  border-radius:20px;
+  border-radius:25px;
   background:linear-gradient(135deg,#1e90ff,#00bfff);
   color:white;
   cursor:pointer;
   font-weight:600;
+  font-size:15px;
+  transition:.3s;
+}
+
+.side-menu button:hover{
+  transform:scale(1.05);
 }
 
 /* CONTAINER */
@@ -195,8 +201,8 @@ footer{
 <div class="menu-btn" onclick="toggleMenu()">☰</div>
 
 <div class="side-menu" id="sideMenu">
-  <button onclick="goHome()">Home</button>
-  <button onclick="showProfile()">Profil</button>
+  <button onclick="goHome()">🏠 Home</button>
+  <button onclick="showProfile()">👤 Profil</button>
 </div>
 
 <div class="container">
