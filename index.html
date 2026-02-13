@@ -21,16 +21,17 @@ body{
   align-items:center;
   justify-content:center;
   color:white;
+  position:relative;
 }
 
 /* HAMBURGER */
 .menu-btn{
-  position:absolute;
+  position:fixed;
   top:20px;
   left:20px;
   font-size:28px;
   cursor:pointer;
-  z-index:1000;
+  z-index:2000;
 }
 
 .side-menu{
@@ -43,6 +44,7 @@ body{
   padding:40px 20px;
   transition:.4s;
   box-shadow:5px 0 20px rgba(0,0,0,.5);
+  z-index:1500;
 }
 
 .side-menu.active{
@@ -75,6 +77,8 @@ body{
   padding:30px;
   box-shadow:0 20px 40px rgba(0,0,0,.4);
   text-align:center;
+  position:relative;
+  z-index:1;
 }
 
 h1{
@@ -177,6 +181,7 @@ footer{
   display:none;
   align-items:center;
   justify-content:center;
+  z-index:3000;
 }
 
 .modal img{
